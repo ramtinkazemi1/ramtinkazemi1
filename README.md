@@ -5,8 +5,8 @@ DevSecOps and cloud security. San Diego, CA.
 I build CI pipelines that scan every layer before it ships, Terraform baselines that fail closed, and detection labs that prove the controls actually fire.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="toolchain-dark.svg">
-  <img src="toolchain-light.svg" alt="Semgrep, Trivy, OWASP ZAP, Wazuh, Splunk, Nmap, AWS, Terraform, Docker, GitHub Actions, Linux, Git, Python, Bash, Java, JavaScript, PostgreSQL, Flask" width="676">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/toolchain-dark.svg">
+  <img src="assets/toolchain-light.svg" alt="Semgrep, Trivy, OWASP ZAP, Wazuh, Splunk, Nmap, AWS, Terraform, Docker, GitHub Actions, Linux, Git, Python, Bash, Java, JavaScript, PostgreSQL, Flask" width="676">
 </picture>
 
 ## Security in CI
@@ -14,8 +14,8 @@ I build CI pipelines that scan every layer before it ships, Terraform baselines 
 Every push and pull request against my Flask target app runs six classes of scan.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="pipeline-dark.svg">
-  <img src="pipeline-light.svg" alt="Pipeline: Gitleaks for secrets, Semgrep for SAST, pip-audit for dependencies, Checkov for IaC, Trivy for the image, OWASP ZAP for DAST" width="768">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
+  <img src="assets/pipeline-light.svg" alt="Pipeline: Gitleaks for secrets, Semgrep for SAST, pip-audit for dependencies, Checkov for IaC, Trivy for the image, OWASP ZAP for DAST" width="768">
 </picture>
 
 Scans run non-blocking, so one pass returns the whole picture instead of stopping at the first finding. Bandit runs alongside Semgrep for Python-specific rules. ZAP tests the running container rather than the source, and uploads its report as a build artifact.
