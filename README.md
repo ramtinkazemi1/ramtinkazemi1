@@ -1,77 +1,50 @@
-<h1 align="center">Hi there 👋, I'm Ramtin Kazemi</h1>
-<p align="left">
-  <img src="https://komarev.com/ghpvc/?username=ramtinkazemi1" alt="Profile Views">
-  <h3 align="center">Looking for entry-level software engineering positions</h3>
-</p>
+# Ramtin Kazemi
 
-<h3 align="center"><a href="https://github.com/ramtinkazemi1/Resume" style="text-decoration: none;"><span style="color: red; font-weight: bold;">Resume</span></a></h3>
-<br>
+DevSecOps and cloud security. San Diego, CA.
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=ramtinkazemi1&show_icons=true&theme=dark" alt="GitHub Stats">
-</p>
+I build CI pipelines that scan every layer before it ships, Terraform baselines that fail closed, and detection labs that prove the controls actually fire.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Java-Advanced-green">
-  <img src="https://img.shields.io/badge/Python-Intermediate-blue">
-  <img src="https://img.shields.io/badge/JavaScript-Intermediate-blue">
-  <img src="https://img.shields.io/badge/HTML5-Intermediate-blue">
-</p>
-<br>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/toolchain-dark.svg">
+  <img src="assets/toolchain-light.svg" alt="Semgrep, Trivy, OWASP ZAP, Wazuh, Splunk, Nmap, AWS, Terraform, Docker, GitHub Actions, Linux, Git, Python, Bash, Java, JavaScript, PostgreSQL, Flask" width="676">
+</picture>
 
-- 🔭 I’m currently working on enhancing my coding skills and building real-world software projects to showcase my abilities to potential employers.
-- 🌱 I’m currently learning Django and working on getting my Security+ certification.
-- 👯 I’m looking to collaborate on open-source software projects, especially those related to backend/ios development, Django, and Python.
-- 🤔 I’m looking for help with navigating the job search process and getting insights from experienced software engineers.
-- 💬 Ask me about computer science fundamentals, algorithms, data structures, or my experiences during my computer science studies.
-- 📫 How to reach me: DM me on [Instagram](https://www.instagram.com/ramtinkazemi/) or connect with me on [LinkedIn](https://www.linkedin.com/in/ramtinkazemi1/).
-- 😄 Pronouns: He/Him
-- ⚡ Fun fact: I enjoy having ketchup on top of my pizza and no sauce on the bottom! 🍕🍅
+## Security in CI
 
-<br>
-<h3 align="center">Languages and Tools</h3>
-<p align="center">
-  <a href="https://www.oracle.com/java/">
-    <img src="https://img.icons8.com/color/50/000000/java-coffee-cup-logo.png" alt="Java" width="50" height="50">
-  </a>
-  <a href="https://www.python.org/">
-    <img src="https://img.icons8.com/color/50/000000/python.png" alt="Python" width="50" height="50">
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML">
-    <img src="https://img.icons8.com/color/50/000000/html-5.png" alt="HTML" width="50" height="50">
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS">
-    <img src="https://img.icons8.com/color/50/000000/css3.png" alt="CSS" width="50" height="50">
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">
-    <img src="https://img.icons8.com/color/50/000000/javascript.png" alt="JavaScript" width="50" height="50">
-  </a>
-  <a href="https://dev.mysql.com/doc/">
-    <img src="https://img.icons8.com/color/50/000000/sql.png" alt="SQL" width="50" height="50">
-  </a>
-  <a href="https://git-scm.com/doc">
-    <img src="https://img.icons8.com/ios/50/000000/git.png" alt="Git" width="50" height="50">
-  </a>
-  <a href="https://www.djangoproject.com/">
-    <img src="https://img.icons8.com/color/50/000000/django.png" alt="Django" width="50" height="50">
-  </a>
-  <a href="https://www.postgresql.org/">
-    <img src="https://www.postgresql.org/media/img/about/press/elephant.png" alt="PostgreSQL" width="50" height="50">
-  </a>
+Every push and pull request against my Flask target app runs six classes of scan.
 
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/pipeline-dark.svg">
+  <img src="assets/pipeline-light.svg" alt="Pipeline: Gitleaks for secrets, Semgrep for SAST, pip-audit for dependencies, Checkov for IaC, Trivy for the image, OWASP ZAP for DAST" width="768">
+</picture>
 
+Scans run non-blocking, so one pass returns the whole picture instead of stopping at the first finding. Bandit runs alongside Semgrep for Python-specific rules. ZAP tests the running container rather than the source, and uploads its report as a build artifact.
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ramtinkazemi1&layout=compact&langs_count=10" alt="Top Languages">
-</p>
+## Cloud hardening
 
-<br>
-<div align="center">
-  <h3 align="center">Trophies</h3>
-  <a href="https://github-profile-trophy.vercel.app/?username=ramtinkazemi1&theme=darkhub">
-    <img src="https://github-profile-trophy.vercel.app/?username=ramtinkazemi1&theme=darkhub" alt="Trophy" />
-  </a>
-</div>
+Terraform baselines for AWS, written to be boring and reproducible.
 
+* S3 with AES-256 at rest, versioning on, and all four public access paths blocked
+* Security groups with zero inbound rules and HTTPS-only egress
+* Default tags on every resource, so ownership and environment are never a question
 
+Images follow the same rule. Slim base, dependencies installed before the app layer, a dedicated non-root user, gunicorn as the entrypoint, and nothing left in the final image an attacker could build with. Target runtime is ECS Fargate.
+
+## Detection
+
+Wazuh for file integrity monitoring, catching unauthorized changes to protected config. Splunk for authentication log analysis, including the brute force signature where repeated 401s from one source finally return a 200. Nmap for service and version enumeration. Lynis for host hardening audits.
+
+## Cryptography
+
+Graduate coursework in CYBR504. Recent labs: measuring CSPRNGs against non-cryptographic PRNGs, and recovering a Fernet key from a script that seeded Python's `random` with a Unix timestamp, then decrypting the file it was protecting.
+
+## Projects
+
+* [vulnerable-flask-lab](https://github.com/ramtinkazemi1/vulnerable-flask-lab): the pipeline above, built on we45's Vulnerable-Flask-App
+* [CIFAR-10-MultiLayerNN](https://github.com/ramtinkazemi1/CIFAR-10-MultiLayerNN): multilayer neural network for image classification, Python
+* [UC-San-Diego_map](https://github.com/ramtinkazemi1/UC-San-Diego_map): campus routing and graph search, JavaScript
+* [Transitive-Closure-Calculator](https://github.com/ramtinkazemi1/Transitive-Closure-Calculator), [maze-solver](https://github.com/ramtinkazemi1/maze-solver), [BST](https://github.com/ramtinkazemi1/BST): Java
+
+## Contact
+
+[LinkedIn](https://www.linkedin.com/in/ramtinkazemi1/) · Open to security engineering roles
